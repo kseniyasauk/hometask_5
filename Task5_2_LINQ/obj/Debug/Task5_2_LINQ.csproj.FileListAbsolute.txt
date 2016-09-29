@@ -4,3 +4,9 @@ c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_2_LINQ\bin\Debug\T
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.exe
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.pdb
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.csprojResolveAssemblyReference.cache
+D:\ht5\hometask_5\Task5_2_LINQ\bin\Debug\Task5_2_LINQ.exe.config
+D:\ht5\hometask_5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.exe
+D:\ht5\hometask_5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.pdb
+D:\ht5\hometask_5\Task5_2_LINQ\bin\Debug\Task5_2_LINQ.exe
+D:\ht5\hometask_5\Task5_2_LINQ\bin\Debug\Task5_2_LINQ.pdb
+D:\ht5\hometask_5\Task5_2_LINQ\obj\Debug\Task5_2_LINQ.csprojResolveAssemblyReference.cache

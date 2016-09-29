@@ -4,3 +4,9 @@ c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_1_Collections\bin\
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_1_Collections\obj\Debug\Task5_1_Collections.csprojResolveAssemblyReference.cache
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_1_Collections\obj\Debug\Task5_1_Collections.exe
 c:\users\pc\documents\visual studio 2015\Projects\Task5\Task5_1_Collections\obj\Debug\Task5_1_Collections.pdb
+D:\ht5\hometask_5\Task5_1_Collections\bin\Debug\Task5_1_Collections.exe.config
+D:\ht5\hometask_5\Task5_1_Collections\obj\Debug\Task5_1_Collections.exe
+D:\ht5\hometask_5\Task5_1_Collections\obj\Debug\Task5_1_Collections.pdb
+D:\ht5\hometask_5\Task5_1_Collections\obj\Debug\Task5_1_Collections.csprojResolveAssemblyReference.cache
+D:\ht5\hometask_5\Task5_1_Collections\bin\Debug\Task5_1_Collections.exe
+D:\ht5\hometask_5\Task5_1_Collections\bin\Debug\Task5_1_Collections.pdb

@@ -8,6 +8,9 @@ namespace Task5_1_Collections
 {
     class Program
     {
-
+        static void Main(string[] args)
+        {
+          Collections.Start();
+        }
     }
 }
