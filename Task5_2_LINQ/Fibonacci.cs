@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace Task5_2_LINQ
 {
@@ -8,31 +9,31 @@ namespace Task5_2_LINQ
     {
         //public List<double> List { get; private set; } = new List<double>();
 
-        public static int GetFibonacci(int n)
+        public static BigInteger GetFibonacci(int n)
         {
-            int a = 0;
-            int b = 1;
+            BigInteger a = 0;
+            BigInteger b = 1;
             // In N steps compute Fibonacci sequence iteratively.
             for (int i = 0; i < n; i++)
             {
-                int temp = a;
-                a = b;
+                BigInteger temp = a;
+                a =  b;
                 b = temp + b;
             }
             return a;
         }
 
-        public static void PrintSequence()
-        {
-            for (int i = 0; i < 200; i++)
-            {
-                Console.WriteLine(GetFibonacci(i));
-            }
-        }
+        //public static void PrintSequence()
+        //{
+        //    for (int i = 0; i < 200; i++)
+        //    {
+        //        Console.WriteLine(GetFibonacci(i));
+        //    }
+        //}
 
-        public static List<int> AddToList()
+        public static List<BigInteger> AddToList()
         {
-            List<int> list = new List<int>();
+            List<BigInteger> list = new List<BigInteger>();
             for (int i = 0; i < 200; i++)
             {
                 list.Add(GetFibonacci(i));
@@ -40,7 +41,7 @@ namespace Task5_2_LINQ
             return list;
         }
 
-        public static bool IsPrime(this int candidate)
+        public static bool IsPrime(this BigInteger candidate)
         {
             // 
             if ((candidate & 1) == 0)
@@ -62,10 +63,10 @@ namespace Task5_2_LINQ
             return candidate != 1;
         }
 
-        public static bool IsDivide(this int candidate)
+        public static bool IsDivide(this BigInteger candidate)
         {
-            int sum = 0;
-            int n = candidate;
+            BigInteger sum = 0;
+            BigInteger n = candidate;
             while (n != 0)
             {
                 sum += n % 10;
@@ -81,9 +82,9 @@ namespace Task5_2_LINQ
             return false;
         }
 
-        public static int SumOfSquare(this int n)
+        public static BigInteger SumOfSquare(this BigInteger n)
         {
-            int sum = 0;
+            BigInteger sum = 0;
             while (n != 0)
             {
                 sum += (n % 10)*(n % 10);
@@ -92,19 +93,19 @@ namespace Task5_2_LINQ
             return sum;
         }
 
-        public static int CountNumberOfZero(this int num)
-        {
-            int counter = 0;
-            for (int i = 0; i < num.ToString().Length; i++)
-            {
-                if (num%10 == 0)
-                {
-                    counter++;
-                }
-                num /= 10;
-            }
-            return counter;
-        }
+        //public static int CountNumberOfZero(this int num)
+        //{
+        //    int counter = 0;
+        //    for (int i = 0; i < num.ToString().Length; i++)
+        //    {
+        //        if (num%10 == 0)
+        //        {
+        //            counter++;
+        //        }
+        //        num /= 10;
+        //    }
+        //    return counter;
+        //}
 
         public static void Start()
         {
@@ -115,29 +116,37 @@ namespace Task5_2_LINQ
             foreach (var l in list)
             {
                 Console.WriteLine(l);
-                if (l.IsPrime())
-                {
-                    counterPrime++;
-                }
-
-                if (l.IsDivide())
-                {
-                    cointerDiv++;
-                }
             }
+            //foreach (var l in list)
+            //{
+                
+            //    if (l.IsPrime())
+            //    {
+            //        counterPrime++;
+            //    }
+
+            //    if (l.IsDivide())
+            //    {
+            //        cointerDiv++;
+            //    }
+            //}
 
             var divOnFive = list
                 .Where(x => x%5 == 0);
             int counterDivOnFive = divOnFive.ToList().Count();
 
             var sqrt = list
-                .Where(x => x.ToString().Contains('2'));
+                .Where(x => x.ToString().Contains('2')).ToList();
 
-            Console.WriteLine($"Theare are {counterPrime} prime numbers, {cointerDiv} numbers divide into their sum of digits, {counterDivOnFive} numbers divide on 5");
-            //foreach (var sq in sqrt.ToList())
-            //{
-            //    Console.WriteLine($"Contains '2': {sq},sqrt: {Math.Round(Math.Sqrt(sq))}");
-            //}
+            //Console.WriteLine($"Theare are {counterPrime} prime numbers, {cointerDiv} numbers divide into their sum of digits, {counterDivOnFive} numbers divide on 5");
+
+            Console.WriteLine($"{ counterDivOnFive} numbers divide on 5");
+
+            foreach (var sq in sqrt)
+            {
+                double value = (double) sq;
+                Console.WriteLine($"Contains '2': {sq},sqrt: {Math.Round(Math.Sqrt(value))}");
+            }
             Console.WriteLine($"All: {sqrt.Count()}");
 
             var sort = list
@@ -153,15 +162,15 @@ namespace Task5_2_LINQ
 
             Console.WriteLine($"Max: {max}");
 
-            var averageZero = list
-                .Select(x => Convert.ToInt32(x.ToString().Contains('0'))
-                    .CountNumberOfZero());
+            //var averageZero = list
+            //    .Select(x => Convert.ToInt32(x.ToString().Contains('0'))
+            //        .CountNumberOfZero());
                // .Average();
-            Console.WriteLine($"Average: {averageZero}");
-            foreach (var avZero in averageZero)
-            {
-                Console.WriteLine(avZero);
-            }
+            //Console.WriteLine($"Average: {averageZero}");
+            //foreach (var avZero in averageZero)
+            //{
+            //    Console.WriteLine(avZero);
+            //}
         }
 
     }
