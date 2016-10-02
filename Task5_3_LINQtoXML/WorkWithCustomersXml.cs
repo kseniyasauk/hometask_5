@@ -7,14 +7,14 @@ using System.Xml.Linq;
 
 namespace Task5_3_LINQtoXML
 {
-    class WorkWithCustomersXml
+    public class WorkWithCustomersXml
     {
-        public static XDocument LoadXml()
+        public  XDocument LoadXml()
         {
             return XDocument.Load(@"D:\Task5\Task5_3_LINQtoXML\Customers.xml");
         }
 
-        public  Dictionary<string,double> CustomersWithSumOfOrder(XDocument xd)
+        public  Dictionary<string,double> GetCustomersWithSumOfOrder(XDocument xd)
         {
             Dictionary<string, double> dictionary = new Dictionary<string, double>();
 
@@ -54,7 +54,7 @@ namespace Task5_3_LINQtoXML
 
         public void Start()
         {
-            var orders = CustomersWithSumOfOrder(LoadXml());
+            var orders = GetCustomersWithSumOfOrder(LoadXml());
             var bigOrders = orders.Where(el => el.Value > 1000.0).ToList();
             foreach (var bigOrder in bigOrders)
             {
@@ -87,7 +87,7 @@ namespace Task5_3_LINQtoXML
 
             Console.WriteLine($"Total: {bigOrders.Count}");
 
-            bigOrders = orders.Where(el => el.Value > 20000.0).ToList();
+            bigOrders = orders.Where(el => el.Value > 25000.0).ToList();
             foreach (var bigOrder in bigOrders)
             {
                 Console.WriteLine(bigOrder);

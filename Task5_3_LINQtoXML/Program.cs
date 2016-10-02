@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Task5_3_LINQtoXML
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

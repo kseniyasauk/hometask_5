@@ -1,0 +1,10 @@
+D:\Task5\Tests\bin\Debug\Tests.dll
+D:\Task5\Tests\bin\Debug\Tests.pdb
+D:\Task5\Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Task5\Tests\bin\Debug\nunit.framework.dll
+D:\Task5\Tests\bin\Debug\Task5_3_LINQtoXML.exe
+D:\Task5\Tests\bin\Debug\Task5_3_LINQtoXML.pdb
+D:\Task5\Tests\bin\Debug\nunit.framework.xml
+D:\Task5\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+D:\Task5\Tests\obj\Debug\Tests.dll
+D:\Task5\Tests\obj\Debug\Tests.pdb
