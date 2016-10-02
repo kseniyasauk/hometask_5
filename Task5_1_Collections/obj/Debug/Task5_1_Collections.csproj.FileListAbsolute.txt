@@ -10,3 +10,6 @@ D:\ht5\hometask_5\Task5_1_Collections\obj\Debug\Task5_1_Collections.pdb
 D:\ht5\hometask_5\Task5_1_Collections\obj\Debug\Task5_1_Collections.csprojResolveAssemblyReference.cache
 D:\ht5\hometask_5\Task5_1_Collections\bin\Debug\Task5_1_Collections.exe
 D:\ht5\hometask_5\Task5_1_Collections\bin\Debug\Task5_1_Collections.pdb
+D:\Task5\Task5_1_Collections\bin\Debug\Task5_1_Collections.exe.config
+D:\Task5\Task5_1_Collections\obj\Debug\Task5_1_Collections.exe
+D:\Task5\Task5_1_Collections\obj\Debug\Task5_1_Collections.pdb

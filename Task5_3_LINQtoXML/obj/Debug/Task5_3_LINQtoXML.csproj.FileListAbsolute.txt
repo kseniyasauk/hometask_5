@@ -1,0 +1,6 @@
+D:\Task5\Task5_3_LINQtoXML\bin\Debug\Task5_3_LINQtoXML.exe.config
+D:\Task5\Task5_3_LINQtoXML\bin\Debug\Task5_3_LINQtoXML.exe
+D:\Task5\Task5_3_LINQtoXML\bin\Debug\Task5_3_LINQtoXML.pdb
+D:\Task5\Task5_3_LINQtoXML\obj\Debug\Task5_3_LINQtoXML.csprojResolveAssemblyReference.cache
+D:\Task5\Task5_3_LINQtoXML\obj\Debug\Task5_3_LINQtoXML.exe
+D:\Task5\Task5_3_LINQtoXML\obj\Debug\Task5_3_LINQtoXML.pdb
