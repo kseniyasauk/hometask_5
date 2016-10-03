@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Microsoft.SqlServer.Server;
 
 namespace Task5_3_LINQtoXML
 {
@@ -14,7 +16,7 @@ namespace Task5_3_LINQtoXML
             return XDocument.Load(@"D:\Task5\Task5_3_LINQtoXML\Customers.xml");
         }
 
-        public  Dictionary<string,double> GetCustomersWithSumOfOrder(XDocument xd)
+        public Dictionary<string, double> GetCustomersWithSumOfOrder(XDocument xd)
         {
             Dictionary<string, double> dictionary = new Dictionary<string, double>();
 
@@ -48,13 +50,123 @@ namespace Task5_3_LINQtoXML
                 dictionary.Add(id,totalSum);
                 
             }
-
             return dictionary;
         }
 
+        public Dictionary<string, string> GroupCustomersByCountries(XDocument xd)
+        {
+            Dictionary<string,string> countries = new Dictionary<string, string>();
+            var customers = xd.Elements()
+                .First()
+                .Elements();
+            foreach (var customer in customers)
+            {
+                var customerAttributes = customer
+                    .Elements();
+                foreach (var attr in customerAttributes)
+                {
+                    if (!attr.Name.LocalName.Equals("country")) continue;
+                    string id = customer
+                        .Elements()
+                        .First()
+                        .Value;
+                    countries.Add(id, attr.Value);
+                    break;
+                }
+            }
+            return countries;
+        }
+
+        public Dictionary<string, List<double>> GetMaxOrders(XDocument xd)
+        {
+            Dictionary<string, List<double>> dictionary = new Dictionary<string, List<double>>();
+            List<double> cost = new List<double>();
+
+            var customers = xd.Elements()
+                .First()
+                .Elements();
+            foreach (var customer in customers)
+            {
+                var orders = customer
+                    .Elements()
+                    .Last()
+                    .Elements();
+
+                string id = customer
+                    .Elements()
+                    .First()
+                    .Value;
+
+                foreach (var order in orders)
+                {
+                    string value = order
+                        .Elements()
+                        .Last()
+                        .Value;
+                    string replace = value.Replace(".", ",");
+
+                    cost.Add(double.Parse(replace));
+                }
+                dictionary.Add(id, cost);
+            }
+            return dictionary;
+        }
+
+        public Dictionary<string, List<DateTime>> GetOrderdate(XDocument xd)
+        {
+            Dictionary<string, List<DateTime>> dictionary = new Dictionary<string, List<DateTime>>();
+            
+
+            var customers = xd.Elements()
+                .First()
+                .Elements();
+            foreach (var customer in customers)
+            {
+               var orders = customer
+                    .Elements()
+                    .Last()
+                    .Elements();
+                string id = customer
+                    .Elements()
+                    .First()
+                    .Value;
+
+                var orderDate = new List<DateTime>();
+
+                foreach (var order in orders)
+                {
+                    var attributes = order
+                        .Elements();
+                    foreach (var attr in attributes)
+                    {
+                        if (!attr.Name.LocalName.Equals("orderdate")) continue;
+                        //DateTime orderDate = DateTime.Parse(order.Value);
+
+                        IFormatProvider culture = CultureInfo.CurrentCulture.DateTimeFormat;
+
+                        
+                        orderDate.Add(DateTime.ParseExact(attr.Value, "yyyy-MM-ddThh:mm:ss", culture));
+                    }
+                    
+                    
+                }
+                dictionary.Add(id, orderDate);
+                //if(orderDate.Count != 0) { orderDate = null;}
+                orderDate = null;
+            }
+            return dictionary;
+        }
+
+
         public void Start()
         {
-            var orders = GetCustomersWithSumOfOrder(LoadXml());
+            XDocument xmlDoc = LoadXml();
+
+            var orders = GetCustomersWithSumOfOrder(xmlDoc);
+            var countries = GroupCustomersByCountries(xmlDoc);
+            //var maxOrders = GetMaxOrders(xmlDoc);
+            var orderDates = GetOrderdate(xmlDoc);
+
             var bigOrders = orders.Where(el => el.Value > 1000.0).ToList();
             foreach (var bigOrder in bigOrders)
             {
@@ -94,6 +206,28 @@ namespace Task5_3_LINQtoXML
             }
 
             Console.WriteLine($"Total: {bigOrders.Count}");
+
+            var groupCustomers = countries.OrderBy(el => el.Value).ToList();
+            foreach (var customer in groupCustomers)
+            {
+                Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
+            }
+
+            //var max = maxOrders.Select(el => el.Value.Where(elem => elem > 25000.0).ToList());
+            //foreach (var maxOrder in max)
+            //{
+            //    Console.WriteLine(maxOrder);
+            //}
+
+            foreach (var orderDate in orderDates)
+            {
+                if (orderDate.Value.Count != 0)
+                {
+                    Console.WriteLine($"Customer:{orderDate.Key} : orderdate --- {orderDate.Value.Min()}");
+                }
+                
+            }
         }
+
     }
 }

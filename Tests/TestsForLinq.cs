@@ -32,6 +32,15 @@ namespace Tests
             Assert.AreEqual(12, bigOrders.Count);
         }
 
+        [TestMethod]
+        public void TstGroupCountries()
+        {
+            var countries = xml.GroupCustomersByCountries(xml.LoadXml());
+            var groupCustomers = countries.OrderBy(el => el.Value).ToList();
+            
+            //Assert.AreEqual(true, groupCustomers);
+        }
+
         [TestCleanup]
         public void TestCleanup()
         {
