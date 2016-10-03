@@ -240,11 +240,11 @@ namespace Task5_3_LINQtoXML
 
             }
 
-            var orderedCustomers = countries.OrderBy(el => el.Value).ToList();
-            foreach (var customer in orderedCustomers)
-            {
-                Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
-            }
+            //var orderedCustomers = countries.OrderBy(el => el.Value).ToList();
+            //foreach (var customer in orderedCustomers)
+            //{
+            //    Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
+            //}
         }
 
     }
