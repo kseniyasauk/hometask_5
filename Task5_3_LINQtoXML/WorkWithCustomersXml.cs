@@ -164,7 +164,7 @@ namespace Task5_3_LINQtoXML
 
             var orders = GetCustomersWithSumOfOrder(xmlDoc);
             var countries = GroupCustomersByCountries(xmlDoc);
-            //var maxOrders = GetMaxOrders(xmlDoc);
+            var maxOrders = GetMaxOrders(xmlDoc);
             var orderDates = GetOrderdate(xmlDoc);
 
             var bigOrders = orders.Where(el => el.Value > 1000.0).ToList();
@@ -213,11 +213,20 @@ namespace Task5_3_LINQtoXML
                 Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
             }
 
-            //var max = maxOrders.Select(el => el.Value.Where(elem => elem > 25000.0).ToList());
-            //foreach (var maxOrder in max)
-            //{
-            //    Console.WriteLine(maxOrder);
-            //}
+            foreach (var maxOrder in maxOrders)
+            {
+                var max = maxOrder
+                    .Value
+                    .Where(el => el > 16000.0)
+                    .ToList();
+                Console.WriteLine($"Customer: {maxOrder.Key}");
+                foreach (var elem in max)
+                {
+                    Console.Write($"has {elem}, ");
+                }
+                Console.WriteLine();
+                
+            }
 
             foreach (var orderDate in orderDates)
             {
