@@ -140,11 +140,9 @@ namespace Task5_3_LINQtoXML
                     foreach (var attr in attributes)
                     {
                         if (!attr.Name.LocalName.Equals("orderdate")) continue;
-                        //DateTime orderDate = DateTime.Parse(order.Value);
 
                         IFormatProvider culture = CultureInfo.CurrentCulture.DateTimeFormat;
 
-                        
                         orderDate.Add(DateTime.ParseExact(attr.Value, "yyyy-MM-ddThh:mm:ss", culture));
                     }
                     
@@ -207,10 +205,15 @@ namespace Task5_3_LINQtoXML
 
             Console.WriteLine($"Total: {bigOrders.Count}");
 
-            var groupCustomers = countries.OrderBy(el => el.Value).ToList();
-            foreach (var customer in groupCustomers)
+            var groupCountries = countries.GroupBy(el => el.Value, el => el.Key);
+            foreach (var group in groupCountries)
             {
-                Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
+                Console.WriteLine($"Country:    {group.Key}");
+                foreach (var customer in group)
+                {
+                    Console.WriteLine($"{customer}");
+                }
+                
             }
 
             foreach (var maxOrder in maxOrders)
@@ -225,8 +228,8 @@ namespace Task5_3_LINQtoXML
                     Console.Write($"has {elem}, ");
                 }
                 Console.WriteLine();
-                
-            }
+
+                }
 
             foreach (var orderDate in orderDates)
             {
@@ -234,7 +237,13 @@ namespace Task5_3_LINQtoXML
                 {
                     Console.WriteLine($"Customer:{orderDate.Key} : orderdate --- {orderDate.Value.Min()}");
                 }
-                
+
+            }
+
+            var orderedCustomers = countries.OrderBy(el => el.Value).ToList();
+            foreach (var customer in orderedCustomers)
+            {
+                Console.WriteLine($"{customer.Value} : customer --- {customer.Key}");
             }
         }
 
